@@ -9,14 +9,15 @@ from PIL import Image
 # Пусть наше приложение предполагает запуск:
 # python search.py Москва, ул. Ак. Королева, 12
 # Тогда запрос к геокодеру формируется следующим образом:
-toponym_to_find = " ".join(sys.argv[2:])
+toponym_to_find = "Москва, ул. Ак. Королева, 12"
 
 toponym_longitude, toponym_lattitude = find_params(toponym_to_find)
 
-spn = sys.argv[1]
-pt = f"toponym_longitude,toponym_lattitude,pmwtm1"
+spn = float(input())
+pt = f"{toponym_longitude},{toponym_lattitude},pmwtm1"
 
 # Собираем параметры для запроса к StaticMapsAPI:
+print(spn, pt)
 map_params = {
     "ll": ",".join([toponym_longitude, toponym_lattitude]),
     "spn": spn,
